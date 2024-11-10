@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrée des données et affichage dans un tableau</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: center;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Entrée des données dans un tableau  <br/> recensement général de la population et de l’habitat au maroc</h1>
+    <p>Entrez les nombres (séparés par des virgules) :</p>
+    <input type="text" id="dataInput" placeholder="Exemple : 1, 2, 3, 4">
+    <button onclick="addData()">Ajouter au tableau</button>
+    
+    <h2>Données saisies :</h2>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>Numéro</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        function addData() {
+            // Récupérer la valeur entrée et la convertir en tableau de nombres
+            const input = document.getElementById('dataInput').value;
+            const data = input.split(',').map(Number);
+            const tableBody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+
+            // Ajouter chaque valeur en tant que nouvelle ligne dans le tableau
+            data.forEach(value => {
+                const row = tableBody.insertRow();
+                const cell = row.insertCell();
+                cell.textContent = value;
+            });
+        }
+    </script>
+</body>
+</html>
